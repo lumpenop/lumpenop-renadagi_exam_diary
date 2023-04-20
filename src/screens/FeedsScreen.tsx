@@ -1,34 +1,18 @@
-import React, {useContext} from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
-import LogContext from 'src/context/LogContext';
-
-interface LogConTextValue {
-  text: string;
-  setContextText: (value: string) => void;
-}
+import React from 'react';
+import {View, StyleSheet, Text} from 'react-native';
+import FloatingWriteButton from 'src/components/FloatingWriteButton';
 
 const FeedsScreen = () => {
-  const context = useContext<LogConTextValue | null>(LogContext);
-
-  if (!context) {
-    return null;
-  }
-  const {text, setContextText} = context;
-
   return (
-    <View>
-      <TextInput
-        value={text}
-        onChangeText={setContextText}
-        placeholder={'text 입력'}
-        style={styles.input}
-      />
+    <View style={styles.block}>
+      <Text>hi</Text>
+      <FloatingWriteButton />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  block: {},
+  block: {flex: 1},
   input: {
     padding: 16,
     backgroundColor: 'white',

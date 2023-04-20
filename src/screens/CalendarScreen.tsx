@@ -3,13 +3,9 @@ import {View, Text, StyleSheet} from 'react-native';
 import LogContext from 'src/context/LogContext';
 
 const CalendarScreen = () => {
-  const context = useContext(LogContext);
-
-  const {text} = context;
-
   return (
     <View>
-      <Text style={styles.text}>text: {text}</Text>
+      <Text style={styles.text}>text: </Text>
     </View>
   );
 };

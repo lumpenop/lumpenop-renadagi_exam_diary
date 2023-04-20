@@ -1,16 +1,17 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, SafeAreaView} from 'react-native';
+import WriteHeader from 'src/components/WriteHeader';
 
 const WriteScreen = () => {
   return (
-    <View>
-      <Text>hi</Text>
-    </View>
+    <SafeAreaView style={styles.block}>
+      <WriteHeader />
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  block: {},
+  block: {flex: 1, backgroundColor: 'white'},
 });
 
 export default WriteScreen;
