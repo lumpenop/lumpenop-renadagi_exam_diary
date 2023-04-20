@@ -7,13 +7,16 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import RootStack from 'src/screens/RootStack';
+import {LogContextProvider} from 'src/context/LogContext';
 
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <RootStack />
+      <LogContextProvider>
+        <RootStack />
+      </LogContextProvider>
     </NavigationContainer>
   );
 }
