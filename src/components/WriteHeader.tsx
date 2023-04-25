@@ -4,7 +4,10 @@ import {Pressable, StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import TransparentCircleButton from 'src/components/TransparentCircleButton';
 
-function WriteHeader() {
+interface Props {
+  onSave: () => void;
+}
+function WriteHeader({onSave}: Props) {
   const navigation = useNavigation();
   const onGoBack = () => {
     navigation.goBack();
@@ -27,6 +30,7 @@ function WriteHeader() {
           hasMarginRight
         />
         <TransparentCircleButton
+          onPress={onSave}
           name="check"
           color="#009688"
           hasMarginRight={false}

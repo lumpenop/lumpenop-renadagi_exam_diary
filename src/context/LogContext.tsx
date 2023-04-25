@@ -1,21 +1,44 @@
 import React, {createContext, useState} from 'react';
+import {v4 as uuidv4} from 'uuid';
 
-interface LogConTextValue {
-  text: string;
-  setContextText: (value: string) => void;
-}
+export type LogConTextValueType = {
+  logs: LogsType[];
+  onCreate: ({title, body, date}: OnCreateType) => void;
+};
 
 interface Props {
   children: JSX.Element;
 }
 
-const LogContext = createContext<LogConTextValue | null>(null);
+const LogContext = createContext<LogConTextValueType | null>(null);
+
+export type LogsType = {
+  id: string;
+  title: string;
+  body: string;
+  date: string;
+};
+type OnCreateType = Pick<LogsType, 'title' | 'body' | 'date'>;
 
 export const LogContextProvider = ({children}: Props) => {
-  const [text, setText] = useState('');
+  const item = Array.from({length: 10}).map((_, index) => {
+    return {
+      id: uuidv4(),
+      title: `Log ${index}`,
+      body: `Log ${index}`,
+      date: new Date().toISOString(),
+    };
+  });
+  const [logs, setLogs] = useState<LogsType[]>(item);
 
-  const setContextText = (value: string) => {
-    setText(value);
+  const onCreate = ({title, body, date}: OnCreateType) => {
+    const log = {
+      id: uuidv4(),
+      title,
+      body,
+      date,
+    };
+    setLogs([log, ...logs]);
   };
 
   if (!LogContext) {
@@ -23,7 +46,7 @@ export const LogContextProvider = ({children}: Props) => {
   }
 
   return (
-    <LogContext.Provider value={{text, setContextText}}>
+    <LogContext.Provider value={{logs, onCreate}}>
       {children}
     </LogContext.Provider>
   );

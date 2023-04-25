@@ -3,10 +3,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet} from 'react-native';
 import CalendarScreen from 'src/screens/CalendarScreen';
 import FeedsScreen from 'src/screens/FeedsScreen';
+import {MainTabParamList} from 'src/screens/RootStack';
 import SearchScreen from 'src/screens/SearchScreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<MainTabParamList>();
 const MainTab = () => {
   return (
     <Tab.Navigator
