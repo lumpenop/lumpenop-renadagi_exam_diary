@@ -24,6 +24,10 @@ const FeedList = ({logs, onScrolledToBottom}: Props) => {
   };
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    if (!onScrolledToBottom) {
+      return;
+    }
+
     const {contentSize, layoutMeasurement, contentOffset} = e.nativeEvent;
     const distanceFromBottom =
       contentSize.height - layoutMeasurement.height - contentOffset.y;
