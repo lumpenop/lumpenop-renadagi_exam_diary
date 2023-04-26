@@ -1,7 +1,9 @@
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {CompositeScreenProps} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NativeStackNavigatorProps} from 'react-native-screens/lib/typescript/native-stack/types';
+import type {StackScreenProps} from '@react-navigation/stack';
 import MainTab from 'src/screens/MainTab';
 import WriteScreen from 'src/screens/WriteScreen';
 
@@ -14,6 +16,15 @@ export type RootStackParamList = {
   MainTab: MainTabParamList;
   Write: undefined;
 };
+
+export type RootStackScreenProps<T extends keyof RootStackParamList> =
+  StackScreenProps<RootStackParamList, T>;
+
+export type HomeTabScreenProps<T extends keyof RootStackParamList> =
+  CompositeScreenProps<
+    BottomTabScreenProps<RootStackParamList, T>,
+    RootStackScreenProps<keyof RootStackParamList>
+  >;
 
 const RootStack = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();

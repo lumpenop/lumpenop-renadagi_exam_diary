@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet} from 'react-native';
+import SearchHeader from 'src/components/SearchHeader';
 import CalendarScreen from 'src/screens/CalendarScreen';
 import FeedsScreen from 'src/screens/FeedsScreen';
 import {MainTabParamList} from 'src/screens/RootStack';
@@ -29,7 +30,7 @@ const MainTab = () => {
         component={CalendarScreen}
         options={{
           tabBarIcon: ({size, color}) => {
-            return <Icon name="search" size={size} color={color} />;
+            return <Icon name="view-stream" size={size} color={color} />;
           },
         }}
       />
@@ -37,9 +38,11 @@ const MainTab = () => {
         name="Search"
         component={SearchScreen}
         options={{
+          title: '검섹',
           tabBarIcon: ({size, color}) => {
-            return <Icon name="view-stream" size={size} color={color} />;
+            return <Icon name="search" size={size} color={color} />;
           },
+          headerTitle: () => <SearchHeader />,
         }}
       />
     </Tab.Navigator>

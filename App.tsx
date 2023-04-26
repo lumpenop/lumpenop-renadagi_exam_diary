@@ -8,15 +8,18 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {StyleSheet} from 'react-native';
+import SearchContextProvider from 'src/context/SearchContext';
 import RootStack from 'src/screens/RootStack';
 import {LogContextProvider} from 'src/context/LogContext';
 
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <LogContextProvider>
-        <RootStack />
-      </LogContextProvider>
+      <SearchContextProvider>
+        <LogContextProvider>
+          <RootStack />
+        </LogContextProvider>
+      </SearchContextProvider>
     </NavigationContainer>
   );
 }
