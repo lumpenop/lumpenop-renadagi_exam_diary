@@ -13,7 +13,7 @@ import FlatList = Animated.FlatList;
 
 interface Props {
   logs: LogsType[];
-  onScrolledToBottom: (isBottom: boolean) => void;
+  onScrolledToBottom?: (isBottom: boolean) => void;
 }
 const FeedList = ({logs, onScrolledToBottom}: Props) => {
   type RenderItemType = {

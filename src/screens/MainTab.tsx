@@ -21,7 +21,7 @@ const MainTab = () => {
         component={FeedsScreen}
         options={{
           tabBarIcon: ({size, color}) => {
-            return <Icon name="event" size={size} color={color} />;
+            return <Icon name="view-stream" size={size} color={color} />;
           },
         }}
       />
@@ -30,7 +30,7 @@ const MainTab = () => {
         component={CalendarScreen}
         options={{
           tabBarIcon: ({size, color}) => {
-            return <Icon name="view-stream" size={size} color={color} />;
+            return <Icon name="event" size={size} color={color} />;
           },
         }}
       />

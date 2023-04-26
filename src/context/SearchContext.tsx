@@ -9,8 +9,8 @@ type SearchContextValueType = {
 interface Props {
   children: JSX.Element;
 }
-const SearchContextProvider = ({children}: Props) => {
-  const SearchContext = createContext<SearchContextValueType | null>(null);
+const SearchContext = createContext<SearchContextValueType | null>(null);
+export const SearchContextProvider = ({children}: Props) => {
   const [keyword, setKeyword] = React.useState('');
   return (
     <SearchContext.Provider value={{keyword, setKeyword}}>
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   block: {},
 });
 
-export default SearchContextProvider;
+export default SearchContext;

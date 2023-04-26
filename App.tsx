@@ -8,7 +8,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {StyleSheet} from 'react-native';
-import SearchContextProvider from 'src/context/SearchContext';
+import {SearchContextProvider} from 'src/context/SearchContext';
 import RootStack from 'src/screens/RootStack';
 import {LogContextProvider} from 'src/context/LogContext';
 
