@@ -1,9 +1,7 @@
 import {
-  NavigationProp,
   ParamListBase,
   RouteProp,
   useNavigation,
-  useRoute,
 } from '@react-navigation/native';
 import React, {useContext} from 'react';
 import {
@@ -26,6 +24,8 @@ const WriteScreen = ({route}: Props) => {
   const [title, setTitle] = React.useState(log?.title ?? '');
   const [body, setBody] = React.useState(log?.body ?? '');
   const navigation = useNavigation();
+  const [date, setDate] = React.useState(log ? new Date(log.date) : new Date());
+
   const logContext = useContext(LogContext);
   if (!logContext) {
     return null;
@@ -59,7 +59,7 @@ const WriteScreen = ({route}: Props) => {
     if (log) {
       onModify({
         id: log.id,
-        date: log.date,
+        date: date.toISOString(),
         title,
         body,
       });
@@ -68,7 +68,7 @@ const WriteScreen = ({route}: Props) => {
         onCreate({
           title,
           body,
-          date: new Date().toISOString(),
+          date: date.toISOString(),
         });
     }
     navigation.goBack();
@@ -83,6 +83,8 @@ const WriteScreen = ({route}: Props) => {
           onSave={onSave}
           onAskRemove={onAskRemove}
           isEditing={!!log}
+          date={date}
+          onChangeDate={setDate}
         />
         <WriteEditor
           title={title}

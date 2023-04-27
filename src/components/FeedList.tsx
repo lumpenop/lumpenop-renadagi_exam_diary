@@ -14,8 +14,9 @@ import FlatList = Animated.FlatList;
 interface Props {
   logs: LogsType[];
   onScrolledToBottom?: (isBottom: boolean) => void;
+  ListHeaderComponent: JSX.Element;
 }
-const FeedList = ({logs, onScrolledToBottom}: Props) => {
+const FeedList = ({logs, onScrolledToBottom, ListHeaderComponent}: Props) => {
   type RenderItemType = {
     item: LogsType;
   };
@@ -46,6 +47,7 @@ const FeedList = ({logs, onScrolledToBottom}: Props) => {
       keyExtractor={log => log.id}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       onScroll={onScroll}
+      ListHeaderComponent={ListHeaderComponent}
     />
   );
 };
