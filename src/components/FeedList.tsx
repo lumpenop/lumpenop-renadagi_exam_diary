@@ -8,17 +8,17 @@ import {
   NativeSyntheticEvent,
 } from 'react-native';
 import FeedListItem from 'src/components/FeedListItem';
-import {LogsType} from 'src/context/LogContext';
+import {LogType} from 'src/context/LogContext';
 import FlatList = Animated.FlatList;
 
 interface Props {
-  logs: LogsType[];
+  logs: LogType[];
   onScrolledToBottom?: (isBottom: boolean) => void;
   ListHeaderComponent: JSX.Element;
 }
 const FeedList = ({logs, onScrolledToBottom, ListHeaderComponent}: Props) => {
   type RenderItemType = {
-    item: LogsType;
+    item: LogType;
   };
   const renderItem = ({item}: RenderItemType) => {
     return <FeedListItem log={item} />;

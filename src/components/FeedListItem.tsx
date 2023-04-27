@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {format, formatDistanceToNow} from 'date-fns';
 import React from 'react';
 import {StyleSheet, View, Text, Pressable, Platform} from 'react-native';
-import {LogsType} from 'src/context/LogContext';
+import {LogType} from 'src/context/LogContext';
 import {ko} from 'date-fns/locale';
 
 const formatDate = (date: string) => {
@@ -27,7 +27,7 @@ const truncate = (text: string) => {
 };
 
 interface Props {
-  log: LogsType;
+  log: LogType;
 }
 const FeedListItem = ({log}: Props) => {
   const {title, body, date} = log;
